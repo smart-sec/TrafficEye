@@ -5,12 +5,11 @@
 
 ### 📥 已经打包好的下载地址：
 
-GIhutb下载地址0.0.8.1版：👉 https://github.com/CuriousLearnerDev/TrafficEye/releases
+GIhutb下载地址0.0.8.8版：👉 https://github.com/CuriousLearnerDev/TrafficEye/releases
 
-夸克网盘0.0.8.1（windows_x64）（提取码：Hzpy）：👉 链接：https://pan.quark.cn/s/f81edabb16d6
+夸克网盘0.0.8.8（windows_amd_x64）（提取码：BZx8）：👉 链接：https://pan.quark.cn/s/8871cf2ea473
 
-夸克网盘0.0.8.1（linux_amd_x64）（提取码：XXSB）：👉 链接：https://pan.quark.cn/s/f6556145dd20
-
+夸克网盘0.0.8.8（linux_amd_x64）（提取码：8udM）：👉 链接：https://pan.quark.cn/s/297011afb565
 
 ### 🛠️ 使用说明
 
@@ -27,10 +26,10 @@ sudo apt install tshark
 运行步骤如下：
 
 ```bash
-unzip linux_amd_x64_0.0.8.1.zip     # 解压
-cd linux_amd_x64_0.0.8.1          # 进入目录
-chmod +x main                   # 添加执行权限
-./main                          # 启动程序
+unzip linux_amd_x64_0.0.8.8.zip   # 解压
+cd linux_amd_x64_0.0.8.8          # 进入目录
+chmod +x trafficeye               # 添加执行权限
+./trafficeye                      # 启动程序
 ```
 
 ------
@@ -45,12 +44,127 @@ chmod +x main                   # 添加执行权限
 双击运行主程序即可
 ```
 
+###  📄 安全检测规则配置
+
+#### 一、语法基础说明
+
+规则在config.yaml里面的**safety_testing**字典里面
+
+用于定义在哪些位置进行匹配检测，可以组合使用，多个位置用 `|` 分隔。
+
+| 标识名                        | 描述                                                |
+| ----------------------------- | --------------------------------------------------- |
+| `ALL`                         | 匹配所有字段（全局检测）                            |
+| `!xxx`                        | 排除 `xxx` 字段不检测                               |
+| `URI`                         | URL 整体检测                                        |
+| `URI_key`                     | URL 中的键名                                        |
+| `URI_value`                   | URL 中的键值                                        |
+| `ALL_headers`                 | 所有请求头                                          |
+| `headers:xxx`                 | 指定请求头，例如 `headers:cookie`                   |
+| `binary`                      | 整体二进制数据                                      |
+| `forms_body`                  | 表单整体内容（`application/x-www-form-urlencoded`） |
+| `forms_key_body`              | 表单键名                                            |
+| `forms_value_body`            | 表单键值                                            |
+| `json_body`                   | JSON 整体内容                                       |
+| `json_key_body`               | JSON 中的键名                                       |
+| `json_value_body`             | JSON 中的值                                         |
+| `json_item_body`              | JSON 中列表项                                       |
+| `xml_body`                    | XML 整体内容                                        |
+| `xml_value_body`              | XML 中的值                                          |
+| `xml_attribute_body`          | XML 属性值                                          |
+| `multipart_body`              | 上传整体内容                                        |
+| `multipart_file_name_body`    | 上传文件名                                          |
+| `multipart_content_type_body` | 上传文件类型                                        |
+| `multipart_data_body`         | 上传文件的二进制数据                                |
+
+二、检测规则结构说明
+
+```yaml
+风险标识名:
+  name:
+    - 规则说明名称
+  detection_location:
+    - 检测目标字段（支持多个，使用 `|` 分隔）
+  rules:
+    - 正则表达式（可多条）
+  severity:
+    - 危险等级（高危 / 中危 / 低危）
+```
+
+
+
+#### 二、示例配置说明
+
+例如：config.yaml文件的
+
+![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250706190259281.png)
+
+```yaml
+safety_testing:
+  Directory_Traversal_Attack:
+    name:
+      - "路径遍历攻击 (/../) 或 (/.../)有效载荷"
+    detection_location:
+      - 'URI|forms_key_body|multipart_file_name_body|ALL_headers|xml_value_body|!headers:referer'
+    rules:
+      - >-
+        (?:(?:^|[\x5c/;])\.{2,3}[\x5c/;]|[\x5c/;]\.{2,3}[\x5c/;])
+    severity:
+      - 中危
+```
+
+上面规则检测的位置
+
+### 检测以下字段内容：
+
+1. **`URI`**
+    → 整体 URL 地址，例如：
+
+   ```bash
+   http://example.com/download.php?file=../../etc/passwd
+   ```
+
+2. **`forms_key_body`**
+    → 表单中的键名，比如：
+
+   ```bash
+   username=admin&file=../../../etc/shadow
+   ↑ 这里是 forms_key_body
+   ```
+
+3. **`multipart_file_name_body`**
+    → 上传文件时的文件名字段，比如：
+
+   ```kotlin
+   Content-Disposition: form-data; name="upload"; filename="../../shell.php"
+   ```
+
+4. **`ALL_headers`**
+    → 所有 HTTP 请求头，比如 `User-Agent`, `Cookie`, `X-Forwarded-For` 等内容。
+
+5. **`xml_value_body`**
+    → XML 数据中的节点值，比如：
+
+   ```xml
+   <config>../../etc/passwd</config>
+   ```
+
+
+
+
+
+
+
+
 ### 📅 最近研发进度
+
 0.0.7版后源码不在公开
 
-2025-05-25：可以看见匹配规则、风险等级、匹配位置、匹配风险位置等
+2025-06/07：安全检测规则编写
 
-![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250527165344737.png)
+![image-20250706201621747](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250706201621747.png)
+
+2025-05-25：可以看见匹配规则、风险等级、匹配位置、匹配风险位置等
 
 2025-05-24：新增风险分析
 
@@ -213,7 +327,7 @@ chmod +x main                   # 添加执行权限
 
 仪表盘统计界面
 
-![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250425105214191.png)
+![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250706213047450.png)
 
 流量文件二进制数据提取
 
@@ -226,6 +340,8 @@ LOG web文件分析
 全流量接触可以拆分成更容易阅读的格式，方便我们分析流量
 
 ![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250425104941414.png)
+
+![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250706214246068.png)
 
 流量会话重放
 
@@ -243,9 +359,9 @@ LOG web文件分析
 
 统计分析
 
-![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250425103953985.png)
+![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250706213938380.png)
 
-![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250425105307648.png)
+![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250706214153311.png)
 
 ![](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250425105343607.png)
 

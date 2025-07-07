@@ -149,7 +149,9 @@ safety_testing:
    <config>../../etc/passwd</config>
    ```
 
+6. `!headers:referer`
 
+   → 不匹配请求头里面的referer
 
 
 

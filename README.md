@@ -1,3 +1,6 @@
+[中文介绍说明](https://github.com/CuriousLearnerDev/TrafficEye/blob/master/README_CN.md)
+
+
 ## 🔧 TrafficEye — Network Traffic Analysis & Security Detection Tool
 
 ------

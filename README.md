@@ -1,4 +1,4 @@
-[English](https://github.com/CuriousLearnerDev/TrafficEye/blob/master/README.md) | [中文](https://github.com/CuriousLearnerDev/TrafficEye/blob/master/README_CN.md)
+English | [中文](./README_CN.md)
 
 ## 🔧 TrafficEye — Network Traffic Analysis & Security Detection Tool
 

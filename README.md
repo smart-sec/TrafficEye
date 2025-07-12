@@ -157,7 +157,7 @@ This rule will detect directory traversal in the following fields:
 
 - > **Note:** The source code is no longer publicly available after version 0.0.7.
 
-  -**2025-07-12**：The problem of the large security analysis file crashing (with size analysis set)
+  - **2025-07-12**：The problem of the large security analysis file crashing (with size analysis set)
   - **2025-07-10**：Add geoip2IP query
   
   - **2025-07-09**: Beautification generation Report

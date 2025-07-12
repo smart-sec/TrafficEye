@@ -13,8 +13,8 @@ English | [中文](./README_CN.md)
 ### 📥 Download Links
 
 - **GitHub Release**: 👉 [https://github.com/CuriousLearnerDev/TrafficEye/releases)](https://github.com/CuriousLearnerDev/TrafficEye/releases)
-- **Quark Drive (Windows x64)** (Code: `BZx8`): 👉 [https://pan.quark.cn/s/8871cf2ea473](https://pan.quark.cn/s/8871cf2ea473)
-- **Quark Drive (Linux x64)** (Code: `8udM`): 👉 [https://pan.quark.cn/s/297011afb565](https://pan.quark.cn/s/297011afb565)
+- **Quark Drive (Windows x64)** (Code: `KZa8`): 👉 https://pan.quark.cn/s/082731993d03
+- **Quark Drive (Linux x64)** (Code: `ZAtt`): 👉 https://pan.quark.cn/s/bf0f84e1c1e3
 
 ------
 
@@ -157,6 +157,7 @@ This rule will detect directory traversal in the following fields:
 
 - > **Note:** The source code is no longer publicly available after version 0.0.7.
 
+  -**2025-07-12**：The problem of the large security analysis file crashing (with size analysis set)
   - **2025-07-10**：Add geoip2IP query
   
   - **2025-07-09**: Beautification generation Report

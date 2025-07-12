@@ -28,10 +28,10 @@ sudo apt install tshark
 运行步骤如下：
 
 ```bash
-unzip linux_amd_x64_0.0.8.8.zip   # 解压
-cd linux_amd_x64_0.0.8.8          # 进入目录
-chmod +x trafficeye               # 添加执行权限
-./trafficeye                      # 启动程序
+unzip linux_amd_x64_0.0.8.9-2.zip   # 解压
+cd linux_amd_x64_0.0.8.9-2          # 进入目录
+chmod +x trafficeye                 # 添加执行权限
+./trafficeye                        # 启动程序
 ```
 
 ------

@@ -33,8 +33,8 @@ sudo apt install tshark
 Run:
 
 ```bash
-unzip linux_amd_x64_0.0.8.9.zip
-cd linux_amd_x64_0.0.8.9
+unzip linux_amd_x64_0.0.8.9-2.zip
+cd linux_amd_x64_0.0.8.9-2
 chmod +x trafficeye
 ./trafficeye
 ```

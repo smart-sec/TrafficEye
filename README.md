@@ -22,7 +22,10 @@ English | [中文](./README_CN.md)
 
 📺 Video Tutorials：
 
-<iframe src="//player.bilibili.com/player.html?bvid=BV1VTMRz1ENN&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src="https://player.bilibili.com/player.html?bvid=BV1VTMRz1ENN&page=1" 
+    scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" 
+    width="640" height="360"></iframe>
+
 
 #### 🔧 Linux Users
 

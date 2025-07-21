@@ -15,6 +15,9 @@ GIhutb下载地址：👉 https://github.com/CuriousLearnerDev/TrafficEye/releas
 
 ### 🛠️ 使用说明
 
+
+📺 视频教程：https://www.bilibili.com/video/BV1VTMRz1ENN
+
 #### 🔧 Linux 系统用户
 
 > ⚠️ **前置依赖：需安装 `tshark`**

@@ -23,8 +23,8 @@ English | [中文](./README_CN.md)
 📺 Video Tutorials：
 
 
-[![]([https://i0.hdslb.com/bfs/archive/你的封面图地址.jpg](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250709173550361.png))](https://www.bilibili.com/video/BV1VTMRz1ENN)
 
+[![视频封面](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250709173550361.png)](https://www.bilibili.com/video/BV1VTMRz1ENN)
 
 
 

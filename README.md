@@ -24,7 +24,7 @@ English | [中文](./README_CN.md)
 
 
 
-[![视频封面](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250709173550361.png)](https://www.bilibili.com/video/BV1VTMRz1ENN)
+[![视频封面](https://zssnp-1301606049.cos.ap-nanjing.myqcloud.com/img/image-20250721114412397.png)](https://www.bilibili.com/video/BV1VTMRz1ENN)
 
 
 
